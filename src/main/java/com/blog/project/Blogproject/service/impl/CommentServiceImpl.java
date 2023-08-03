@@ -71,7 +71,6 @@ public class CommentServiceImpl implements CommentService {
         if (!comment.getPost().getId().equals(post.getId())) {
             throw new BolgAPIException(HttpStatus.BAD_REQUEST, "Comment does not belong to post");
         }
-
         return mapToDto(comment);
     }
 
@@ -87,7 +86,6 @@ public class CommentServiceImpl implements CommentService {
         if (!exitingComment.getPost().getId().equals(post.getId())) {
             throw new BolgAPIException(HttpStatus.BAD_REQUEST, "Comment does not belong to post");
         }
-
         if (request.getName() != null) {
             exitingComment.setName(request.getName());
         }
@@ -97,15 +95,12 @@ public class CommentServiceImpl implements CommentService {
         if (request.getBody() != null) {
             exitingComment.setBody(request.getBody());
         }
-
         Comment updatedComment = commentRepository.save(exitingComment);
-
         return mapToDto(updatedComment);
     }
 
     @Override
     public String deleteComment(Long postId, Long commentId) {
-
         Post post = postRepository.findById(postId).orElseThrow(
                 () -> new ResourceNotFoundException("Post", "id", postId));
         Comment comment = commentRepository.findById(commentId).orElseThrow(
@@ -115,17 +110,14 @@ public class CommentServiceImpl implements CommentService {
         }
         commentRepository.deleteById(commentId);
         return "Comment deleted with comment_id number" + commentId ;
-
     }
 
 
     private CommentDto mapToDto(Comment comment) {
 
         CommentDto commentDto = mapper.map(comment, CommentDto.class);
-
         return commentDto;
     }
-
 
     private Comment mapToEntity(CommentDto commentDto) {
 
