@@ -21,7 +21,6 @@ import java.util.List;
         name = "CURD Rest APIs For Post Resource"
 )
 @RestController
-@RequestMapping()
 public class PostController {
 
     @Autowired
