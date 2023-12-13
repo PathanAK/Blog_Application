@@ -53,6 +53,5 @@ public class BlogProjectApplication implements CommandLineRunner {
         userRole.setName("ROLE_USER");
         roleRepository.save(userRole);
 
-        System.out.println("hello ");
     }
 }
