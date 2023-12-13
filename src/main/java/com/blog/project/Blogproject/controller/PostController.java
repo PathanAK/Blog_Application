@@ -94,6 +94,10 @@ public class PostController {
 //        return new ResponseEntity<>(postDtoV2, HttpStatus.OK);
 //    }
 
+    public String testUpdate() {
+        return "Testing";
+    }
+
 
     @Operation(
             summary = "Update Post Rest Api",
